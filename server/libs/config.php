@@ -2,7 +2,7 @@
 /**
  * for Data Base MySQL
  */
-define('DSN_MY', 'mysql:host=localhost;dbname=soap_shop');
+define('DSN_MY', 'mysql:host=localhost;dbname=user6');
 define('USER_NAME', 'user6');
 define('PASS', 'tuser6');
 

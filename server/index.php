@@ -22,4 +22,14 @@ catch (Exception $exception)
 {
     echo $exception->getMessage();
 }
-$cars->getCarsByParam(23);
+
+$arr = [
+    'year'=>'1938', 'model'=>'traKtorec4835', 'brand'=>'TracKtorFigaktor',
+     'engine'=>'3500', 'color'=>'RED', 'max_speed'=>'800', 'price'=>4000 
+     ];
+
+$arr2 = [
+    'year'=>'1987', 'model'=>'2108', 
+    ];
+
+var_dump($cars->getCarsByParams($arr2));
