@@ -24,12 +24,13 @@ catch (Exception $exception)
 }
 
 $arr = [
-    'year'=>'1938', 'model'=>'traKtorec4835', 'brand'=>'TracKtorFigaktor',
-     'engine'=>'3500', 'color'=>'RED', 'max_speed'=>'800', 'price'=>4000 
+            'id_car'=>'', 'f_name'=>'Henri', 'l_name'=>'Nekrasov', 'payment'=>'cash'
      ];
 
 $arr2 = [
-    'year'=>'1987', 'model'=>'2108', 
+    'year'=>'1987', 'brand'=>'Vazq', 
     ];
 
-var_dump($cars->getCarsByParams($arr2));
+//var_dump($cars->getCarsByParams($arr2));
+
+//var_dump($cars->getOrderCar($arr));

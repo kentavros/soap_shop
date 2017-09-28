@@ -84,7 +84,6 @@ class Cars
             $where .= " AND price=".$price;
         }
         $sql = "SELECT brand, model, year, engine, color, max_speed, price FROM cars WHERE year=".$where;
-        //echo $sql;
         $sth = $this->pdo->prepare($sql);
         $result = $sth->execute();
         if (false === $result)
@@ -92,8 +91,23 @@ class Cars
             throw new Exception(ERR_QUERY);
         }
         return $sth->fetchAll(PDO::FETCH_ASSOC);
- 
+    }
 
-
+    public function getOrderCar($arrParams)
+    {
+        if (!empty($arrParams['id_car']) && !empty($arrParams['f_name']) && !empty($arrParams['l_name']) && !empty($arrParams['payment']))
+        {
+            $id_car = $this->pdo->quote($arrParams['id_car']);
+            $f_name = $this->pdo->quote($arrParams['f_name']);
+            $l_name = $this->pdo->quote($arrParams['l_name']);
+            $payment = $this->pdo->quote($arrParams['payment']);
+            $sql = "INSERT INTO orders (id_car, f_name, l_name, payment) VALUES  (".$id_car.", ".$f_name.", ".$l_name.", ".$payment.")";
+            $count = $this->pdo->exec($sql);
+            return $count;
+        }
+        else 
+        {
+            throw new Exception(ERR_FIELDS);
+        } 
     }
 }
