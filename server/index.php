@@ -1,36 +1,16 @@
 <?php
 include 'libs/config.php';
 include 'libs/function.php';
-try
-{
-    $cars = new Cars();
+//include 'libs/Cars.php';
 
-}
-catch (PDOException $exception)
-{
-    echo $exception->getMessage();
-}
-echo '<pre>';
-//var_dump($cars->getAllCars());
-echo '</pre>';
+//$db = new Cars();
+//var_dump($db->getAllCars());
 
-try
-{
-//    $cars->getCarsByParam(23);
-}
-catch (Exception $exception)
-{
-    echo $exception->getMessage();
-}
 
-$arr = [
-            'id_car'=>'', 'f_name'=>'Henri', 'l_name'=>'Nekrasov', 'payment'=>'cash'
-     ];
 
-$arr2 = [
-    'year'=>'1987', 'brand'=>'Vazq', 
-    ];
+ini_set("soap.wsdl_cache_enabled", "0");
 
-//var_dump($cars->getCarsByParams($arr2));
+$server = new SoapServer("soap.wsdl");
+$server->setClass("Cars");
+$server->handle();
 
-//var_dump($cars->getOrderCar($arr));
