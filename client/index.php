@@ -1,9 +1,7 @@
 <?php
 ini_set("soap.wsdl_cache_enable", "0");
 
-$client = new SoapClient('http://192.168.0.15/~user6/SOAP/soap_shop/server/soap.wsdl',
-array('trace'=>1)
-);
+$client = new SoapClient('http://192.168.0.15/~user6/SOAP/soap_shop/server/soap.wsdl');
 
 
 print_r($client->__getFunctions());
