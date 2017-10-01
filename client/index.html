@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Car</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-inverse ">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand " href="#">Task II -- SOAP: Client and Server </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container center-block ">
+    <h1 class="text-center">Auto-Shop</h1>
+    <p class="text-center">we will pick you a car with a run</p>
+    <div class="main">
+
+    </div>
+
+    <div class="form-serch">
+        <div class="row">
+            <div class="col-md-2">
+                <label for="inputYear" class="col-2 col-form-label">Year</label>
+                <input type="text" class="form-control" id="inputYear" placeholder="***Examp: 1987">
+            </div>
+            <div class="col-md-2">
+                <label for="inputModel" class="col-2 col-form-label">Model</label>
+                <input type="text" class="form-control" id="inputModel" placeholder="Examp: 2108">
+            </div>
+            <div class="col-md-2">
+                <label for="inputEngine" class="col-2 col-form-label">Engine</label>
+                <input type="text" class="form-control" id="inputEngine" placeholder="Examp: 1300">
+            </div>
+            <div class="col-md-2">
+                <label for="inputColor" class="col-2 col-form-label">Color</label>
+                <input type="text" class="form-control" id="inputColor" placeholder="Examp: chhery">
+            </div>
+            <div class="col-md-2">
+                <label for="inputSpeed" class="col-2 col-form-label">Max speed</label>
+                <input type="text" class="form-control" id="inputSpeed"  placeholder="Examp: 150">
+            </div>
+            <div class="col-md-2">
+                <label for="inputPrice" class="col-2 col-form-label">Price</label>
+                <input type="text" class="form-control" id="inputPrice" placeholder="Examp: 1000">
+            </div>
+            <div class="btnForm">
+            <button type="submit" class="btn btn-primary" onclick="">Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="allCars">
+
+    </div>
+
+<div class="form-order">
+    <fieldset disabled>
+    <div class="form-group row">
+        <label for="id_car" class="col-2 col-form-label">ID CAR</label>
+        <div class="col-10">
+            <input class="form-control" type="text" id="id_car">
+        </div>
+    </div>
+    </fieldset>
+    <div class="form-group row">
+        <label for="inputFname" class="col-2 col-form-label">First Name</label>
+        <div class="col-10">
+            <input class="form-control" type="text" id="inputFname">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputLname" class="col-2 col-form-label">Last Name</label>
+        <div class="col-10">
+            <input class="form-control" type="text" id="inputLname">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="paySelect" class="col-2 col-form-label">Pay Choice</label>
+        <div class="col-10">
+            <select class="form-control" id="paySelect">
+                <option value="cash">Cash</option>
+                <option value="credit_card">Credit card</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="app.getOrderCar()">Submit</button>
+</div>
+
+</div>
+
+
+
+
+<footer class="modal-footer navbar-inverse navbar-fixed-bottom" style="padding: 3px;">
+    <div class="container">
+        <a class="navbar-brand" style="float: right" href="#">Task II Soap client</a>
+    </div>
+</footer>
+<script src="js/app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

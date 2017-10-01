@@ -20,9 +20,11 @@ class Cars
         $result = $sth->execute();
         if (false === $result)
         {
-            throw new Exception(ERR_QUERY);
+            throw new SoapFault('Server', ERR_QUERY);
         }
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+        $data =  $sth->fetchAll(PDO::FETCH_ASSOC);
+        $resJSON = json_encode($data);
+        return $resJSON;
     }
 
     /**
@@ -36,9 +38,11 @@ class Cars
         $result = $sth->execute();
         if (false === $result)
         {
-            throw new Exception(ERR_QUERY);
+            throw new SoapFault('Server', ERR_QUERY);
         }
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+        $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $resJSON = json_encode($data);
+        return $resJSON;
     }
 
     /**
@@ -46,9 +50,10 @@ class Cars
      */
     public function getCarsByParams($arrParams)
     {
+        $arrParams = json_decode($arrParams, true);
         if(empty($arrParams['year']) )
         {
-            throw new Exception(ERR_PARAMS);
+            throw new SoapFault('Server', ERR_PARAMS);
         }
        
         $year = $this->pdo->quote($arrParams['year']);
@@ -88,13 +93,17 @@ class Cars
         $result = $sth->execute();
         if (false === $result)
         {
-            throw new Exception(ERR_QUERY);
+            throw new SoapFault('Server', ERR_QUERY);
         }
-        return $sth->fetchAll(PDO::FETCH_ASSOC);
+        $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+        $resJSON = json_encode($data);
+        return $resJSON;
+//        return $data;
     }
 
     public function getOrderCar($arrParams)
     {
+        $arrParams = json_decode($arrParams, true);
         if (!empty($arrParams['id_car']) && !empty($arrParams['f_name']) && !empty($arrParams['l_name']) && !empty($arrParams['payment']))
         {
             $id_car = $this->pdo->quote($arrParams['id_car']);
@@ -107,7 +116,7 @@ class Cars
         }
         else 
         {
-            throw new Exception(ERR_FIELDS);
+            throw new SoapFault('Server', ERR_FIELDS);
         } 
     }
 }

@@ -3,7 +3,7 @@
     xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
-    xmlns:tns="http://192.168.0.15/~user6/SOAP/soap_shop/server/"
+    xmlns:tns="http://soap/soap_shop/server/"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
     xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
@@ -11,25 +11,25 @@
     xmlns="http://schemas.xmlsoap.org/wsdl/">
     <types>
         <xs:schema elementFormDefault="qualified"
-            targetNamespace="http://192.168.0.15/~user6/SOAP/soap_shop/server/">
+            targetNamespace="http://soap/soap_shop/server/">
             <xs:complexType name="Car">
                 <xs:sequence>
-                    <xs:element name="id" type="xs:int"/>
+                    <xs:element name="id" type="xs:string"/>
                     <xs:element name="brand" type="xs:string"/>
                     <xs:element name="model" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
 
             <xs:element name="getAllCarsResponse">
-                <xs:complexType name="CarList">
+                <xs:complexType name="getAllCars">
                     <xs:sequence>
-                        <xs:element minOccurs="1" maxOccurs="unbounded" name="Car" type="Car"/>
+                        <xs:element minOccurs="1" maxOccurs="unbounded" name="cars" type="Car"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
 
             <xs:element name="getCarByIdResponse">
-                <xs:complexType name="CarById">
+                <xs:complexType name="getCarById">
                     <xs:sequence>
                         <xs:element name='brand' type="xs:string"/>
                         <xs:element name='model' type="xs:string"/>
@@ -44,9 +44,6 @@
 
         </xs:schema>
     </types>
-
-
-
 
     <!-- Message proceduri getAllCars  -->
     <message name="getAllCarsRequest">
@@ -111,7 +108,7 @@
     <!-- Define service -->
     <service name="CarShop">
         <port name="CarShopPort" binding="tns:CarShopBinding">
-            <soap:address location="http://192.168.0.15/~user6/SOAP/soap_shop/server/index.php" />
+            <soap:address location="http://soap/soap_shop/server/index__t.php" />
         </port>
     </service> 
 </definitions>
