@@ -1,3 +1,7 @@
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 100px;
+}
 .container h1{
     color: darkblue;
 }
@@ -39,4 +43,8 @@
     margin-top: 70px;
     margin-bottom: 5px;
     text-align: center;
+}
+
+.form-serch{
+    display: none;
 }

@@ -15,14 +15,14 @@
         </div>
     </div>
 </nav>
-
 <div class="container center-block ">
+    <div class="error alert-danger text-center"></div>
     <h1 class="text-center">Auto-Shop</h1>
     <p class="text-center">we will pick you a car with a run</p>
     <div class="main">
 
     </div>
-
+<!-- FORM SEARCH BY PARAMS-->
     <div class="form-serch">
         <div class="row">
             <div class="col-md-2">
@@ -50,7 +50,7 @@
                 <input type="text" class="form-control" id="inputPrice" placeholder="Examp: 1000">
             </div>
             <div class="btnForm">
-            <button type="submit" class="btn btn-primary" onclick="">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="app.getCarsByParams()">Submit</button>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
     <div class="allCars">
 
     </div>
-
+<!-- FORM PRE ORDER -->
 <div class="form-order">
     <fieldset disabled>
     <div class="form-group row">

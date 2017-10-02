@@ -3,6 +3,9 @@ class Cars
 {
     private $pdo;
 
+    /**
+     * Cars constructor. - connect to DB
+     */
     public function __construct()
     {
         $pdo = new PDO(DSN_MY, USER_NAME, PASS);
@@ -13,6 +16,11 @@ class Cars
         }
     }
 
+    /**
+     * GET All Cars from BD
+     * @return string
+     * @throws SoapFault
+     */
     public function getAllCars()
     {
         $sql = "SELECT id, brand, model FROM cars";
@@ -28,6 +36,7 @@ class Cars
     }
 
     /**
+     * GET Car by Id
      * @param $id
      */
     public function getCarById($id)
@@ -46,6 +55,7 @@ class Cars
     }
 
     /**
+     * Get cars by Params
      * @param $arrParams
      */
     public function getCarsByParams($arrParams)
@@ -68,10 +78,10 @@ class Cars
             $model = $this->pdo->quote($arrParams['model']);
             $where .= " AND model=".$model;
         }
-        if (!empty($arrParams['engin']))
+        if (!empty($arrParams['engine']))
         {
-            $engin = $this->pdo->quote($arrParams['engin']);
-            $where .= " AND engin=".$engin;
+            $engin = $this->pdo->quote($arrParams['engine']);
+            $where .= " AND engine=".$engin;
         }
         if (!empty($arrParams['color']))
         {
@@ -88,7 +98,7 @@ class Cars
             $price = $this->pdo->quote($arrParams['price']);
             $where .= " AND price=".$price;
         }
-        $sql = "SELECT brand, model, year, engine, color, max_speed, price FROM cars WHERE year=".$where;
+        $sql = "SELECT id, brand, model, year, engine, color, max_speed, price FROM cars WHERE year=".$where;
         $sth = $this->pdo->prepare($sql);
         $result = $sth->execute();
         if (false === $result)
@@ -98,14 +108,23 @@ class Cars
         $data = $sth->fetchAll(PDO::FETCH_ASSOC);
         $resJSON = json_encode($data);
         return $resJSON;
-//        return $data;
     }
 
+    /**
+     * Pre-order Car - write to BD
+     * @param $arrParams
+     * @return int
+     * @throws SoapFault
+     */
     public function getOrderCar($arrParams)
     {
         $arrParams = json_decode($arrParams, true);
         if (!empty($arrParams['id_car']) && !empty($arrParams['f_name']) && !empty($arrParams['l_name']) && !empty($arrParams['payment']))
         {
+            if (($arrParams['payment'] != 'cash') && ($arrParams['payment'] != 'credit_card'))
+            {
+                throw new SoapFault('Server', ERR_PAY);
+            }
             $id_car = $this->pdo->quote($arrParams['id_car']);
             $f_name = $this->pdo->quote($arrParams['f_name']);
             $l_name = $this->pdo->quote($arrParams['l_name']);

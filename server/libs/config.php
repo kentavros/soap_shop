@@ -11,5 +11,6 @@ define('PASS', 'tuser6');
  */
 define('ERR_DB', 'Error connecting to DB');
 define('ERR_QUERY', 'Error query to DB');
-define('ERR_PARAMS', 'Error - missing year parameter! Example: {"year":"1987", "brand":"Vaz"}');
+define('ERR_PARAMS', 'Error - missing year parameter! Fill out the required field "Year"');
 define('ERR_FIELDS', 'Error - some fields are empty!');
+define('ERR_PAY', 'Field payment must be "cash" or "credit_card"');
